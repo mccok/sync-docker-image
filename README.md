@@ -32,11 +32,11 @@ Docker 的一些服务所在域名被封杀，无法直接访问和拉取镜像�
 > # 镜像源 (Registry)
 > source: docker.io
 > # 目标源 (Registry)
-> destination: registry.cn-beijing.aliyuncs.com
+> destination: registry.cn-shenzhen.aliyuncs.com
 > # 仓库及标签 (格式 repo:tag)
 > source_repo: nginx:1.13
 > # 目标仓库及标签 (格式 repo:tag)
-> destination_repo: ikrong/nginx:1.13
+> destination_repo: dockerproxy_cc/nginx:1.13
 > ```
 > 必须要填写仓库及标签
 
@@ -52,17 +52,17 @@ Docker 的一些服务所在域名被封杀，无法直接访问和拉取镜像�
 
 > 填写说明：
 >
-> 如同步 DockerHub 上的 nginx 的所有标签到阿里云容器镜像仓库 registry.cn-beijing.aliyuncs.com/ikrong/nginx，则填写如下：
+> 如同步 DockerHub 上的 nginx 的所有标签到阿里云容器镜像仓库 registry.cn-shenzhen.aliyuncs.com/dockerproxy_cc/nginx，则填写如下：
 >
 > ```yaml
 > # 镜像源 (Registry)
 > source: docker.io
 > # 目标源 (Registry)
-> destination: registry.cn-beijing.aliyuncs.com
+> destination: registry.cn-shenzhen.aliyuncs.com
 > # 仓库 (格式 repo)
 > source_repo: nginx
 > # 目标Scope (格式 scope)
-> destination_scope: ikrong
+> destination_scope: dockerproxy_cc
 > ```
 > 只需要填写需要同步的仓库和目标仓库所在的scope
 
