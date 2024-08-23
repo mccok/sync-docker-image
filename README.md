@@ -20,14 +20,14 @@ Docker 的一些服务所在域名被封杀，无法直接访问和拉取镜像�
 
 ![配置内容](assets/new-secret.png)
 
-3. 在 *Actions* 页面上选择 *copy.yml* 点击 *Run workflow* 填写内容即可运行。
+3. 在仓库主界面的  *Actions* 页面上选择 *copy.yml* 点击 *Run workflow* 填写内容即可运行。
 
 ![Run Copy workflow](assets/copy.png)
 
 > 填写说明：
 >
 > 如同步 DockerHub 上的 nginx:1.13 到 阿里云容器镜像仓库 registry.cn-beijing.aliyuncs.com/ikrong/nginx:1.13，则填写如下：
->
+> #格式一:
 > ```yaml
 > # 镜像源 (Registry)
 > source: docker.io
@@ -37,7 +37,17 @@ Docker 的一些服务所在域名被封杀，无法直接访问和拉取镜像�
 > source_repo: nginx:1.13
 > # 目标仓库及标签 (格式 repo:tag)
 > destination_repo: dockerproxy_cc/nginx:1.13
-> ```
+> #格式二
+> ```yaml
+> # 镜像源 (Registry/namespace)
+> source: gcr.io/k8s-staging-sig-storage
+> # 目标源 (Registry)
+> destination: registry.cn-shenzhen.aliyuncs.com
+> # 仓库及标签 (格式 repo:tag)
+> source_repo: nfsplugin:canary
+> # 目标仓库及标签 (格式 repo:tag)
+> destination_repo: dockerproxy_cc/nfsplugin:canary
+
 > 必须要填写仓库及标签
 
 ## Sync.yml 运行介绍
