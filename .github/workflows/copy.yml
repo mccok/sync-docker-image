@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
     inputs:
       source:
-        description: '镜像源 (Registry)'     
+        description: '镜像源 (Registry) or (Registry/namespace 但排除dockerhub仓库) '     
         required: true
         default: 'docker.io'
       destination:
@@ -12,7 +12,7 @@ on:
         required: true
         default: 'registry.cn-shenzhen.aliyuncs.com'
       source_repo:
-        description: '源仓库及标签 (格式 repo:tag)'
+        description: '源仓库及标签 (默认格式 repo:tag) or Dockerhub: mccokong/openjdk8u265:xx'
         required: true
         default: ''
       destination_repo:
