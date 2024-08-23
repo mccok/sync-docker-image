@@ -1,5 +1,5 @@
 name: Copy multiple Docker Image
-run-name: Copy ${{ inputs.source_repo }} to ${{ inputs.destination_repo }}
+run-name: Copy Docker Images
 on:
   workflow_dispatch:
     inputs:
@@ -7,50 +7,50 @@ on:
         description: '第一个镜像源 (Registry)'
         required: true
         default: 'docker.io'
-      source_2:
-        description: '第二个镜像源 (Registry)'
-        required: true
-        default: 'gcr.io'
-      destination:
-        description: '目标源 (Registry)'
+      destination_1:
+        description: '第一个目标源 (Registry)'
         required: true
         default: 'registry.cn-shenzhen.aliyuncs.com'
       source_repo_1:
         description: '第一个源仓库及标签 (格式 repo:tag)'
         required: true
         default: 'nginx:1.21.1'
-      source_repo_2:
-        description: '第二个源仓库及标签 (格式 repo:tag)'
-        required: true
-        default: 'mccokong/openjdk8u265:latest'
       destination_repo_1:
-        description: '目标仓库及标签 (格式 repo:tag)'
+        description: '第一个目标仓库及标签 (格式 repo:tag)'
         required: true
         default: 'dockerproxy_cc/nginx:1.21.1'
+      source_2:
+        description: '第二个镜像源 (Registry)'
+        required: false
+        default: ''
+      source_repo_2:
+        description: '第二个源仓库及标签 (格式 repo:tag)'
+        required: false
+        default: ''
       destination_repo_2:
-        description: '目标仓库及标签 (格式 repo:tag)'
-        required: true
-        default: 'dockerproxy_cc/openjdk8u265:latest'
+        description: '第二个目标仓库及标签 (格式 repo:tag)'
+        required: false
+        default: ''
 
 jobs:
   copy:
     runs-on: ubuntu-latest
     steps:
-    - name: Copy Docker Image from source 1
-      uses: ikrong/docker-sync-action@main
-      with:
-        source: ${{ github.event.inputs.source_1 }}
-        source-credential: ${{ secrets.SOURCE_CREDENTIAL }}
-        destination: ${{ github.event.inputs.destination }}
-        destination-credential: ${{ secrets.DESTINATION_CREDENTIAL }}
-        copy: "${{ github.event.inputs.source_repo_1 }} ${{ github.event.inputs.destination_repo_1 }}"
+      - name: Copy Docker Image from source 1
+        uses: ikrong/docker-sync-action@main
+        with:
+          source: ${{ github.event.inputs.source_1 }}
+          source-credential: ${{ secrets.SOURCE_CREDENTIAL_1 }}
+          destination: ${{ github.event.inputs.destination_1 }}
+          destination-credential: ${{ secrets.DESTINATION_CREDENTIAL_1 }}
+          copy: "${{ github.event.inputs.source_repo_1 }} ${{ github.event.inputs.destination_repo_1 }}"
 
-    - name: Copy Docker Image from source 2
-      uses: ikrong/docker-sync-action@main
-      with:
-        source: ${{ github.event.inputs.source_2 }}
-        source-credential: ${{ secrets.SOURCE_CREDENTIAL }}
-        destination: ${{ github.event.inputs.destination }}
-        destination-credential: ${{ secrets.DESTINATION_CREDENTIAL }}
-        copy: "${{ github.event.inputs.source_repo_2 }} ${{ github.event.inputs.destination_repo_2 }}"
-
+      - name: Copy Docker Image from source 2
+        if: ${{ github.event.inputs.source_2 != '' && github.event.inputs.source_repo_2 != '' && github.event.inputs.destination_repo_2 != '' }}
+        uses: ikrong/docker-sync-action@main
+        with:
+          source: ${{ github.event.inputs.source_2 }}
+          source-credential: ${{ secrets.SOURCE_CREDENTIAL_2 }}
+          destination: ${{ github.event.inputs.destination_2 }}
+          destination-credential: ${{ secrets.DESTINATION_CREDENTIAL_2 }}
+          copy: "${{ github.event.inputs.source_repo_2 }} ${{ github.event.inputs.destination_repo_2 }}"
