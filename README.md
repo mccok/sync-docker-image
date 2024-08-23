@@ -39,7 +39,8 @@ Docker 的一些服务所在域名被封杀，无法直接访问和拉取镜像�
 > # 目标仓库及标签 (格式 repo:tag)
 > destination_repo: dockerproxy_cc/nginx:1.13
 
-> 格式二
+> 格式二：
+> ```yaml
 > # 镜像源 (Registry/namespace)
 > source: gcr.io/k8s-staging-sig-storage
 > # 目标源 (Registry)
