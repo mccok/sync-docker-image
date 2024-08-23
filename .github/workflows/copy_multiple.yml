@@ -7,7 +7,7 @@ on:
         description: '第一个镜像源 (Registry)'
         required: true
         default: 'docker.io'
-      destination_1:
+      destination:
         description: '第一个目标源 (Registry)'
         required: true
         default: 'registry.cn-shenzhen.aliyuncs.com'
