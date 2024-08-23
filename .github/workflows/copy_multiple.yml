@@ -40,9 +40,9 @@ jobs:
         uses: ikrong/docker-sync-action@main
         with:
           source: ${{ github.event.inputs.source_1 }}
-          source-credential: ${{ secrets.SOURCE_CREDENTIAL_1 }}
-          destination: ${{ github.event.inputs.destination_1 }}
-          destination-credential: ${{ secrets.DESTINATION_CREDENTIAL_1 }}
+          source-credential: ${{ secrets.SOURCE_CREDENTIAL }}
+          destination: ${{ github.event.inputs.destination }}
+          destination-credential: ${{ secrets.DESTINATION_CREDENTIAL }}
           copy: "${{ github.event.inputs.source_repo_1 }} ${{ github.event.inputs.destination_repo_1 }}"
 
       - name: Copy Docker Image from source 2
@@ -50,7 +50,7 @@ jobs:
         uses: ikrong/docker-sync-action@main
         with:
           source: ${{ github.event.inputs.source_2 }}
-          source-credential: ${{ secrets.SOURCE_CREDENTIAL_2 }}
-          destination: ${{ github.event.inputs.destination_2 }}
-          destination-credential: ${{ secrets.DESTINATION_CREDENTIAL_2 }}
-          copy: "${{ github.event.inputs.source_repo_2 }} ${{ github.event.inputs.destination_repo_2 }}"
+          source-credential: ${{ secrets.SOURCE_CREDENTIAL }}
+          destination: ${{ github.event.inputs.destination }}
+          destination-credential: ${{ secrets.DESTINATION_CREDENTIAL }}
+          copy: "${{ github.event.inputs.source_repo_1 }} ${{ github.event.inputs.destination_repo_1 }}"
