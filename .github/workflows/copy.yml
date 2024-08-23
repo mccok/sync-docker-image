@@ -12,7 +12,7 @@ on:
         required: true
         default: 'registry.cn-shenzhen.aliyuncs.com'
       source_repo:
-        description: '源仓库及标签 (默认格式 repo:tag) or Dockerhub: mccokong/openjdk8u265:xx'
+        description: '源仓库及标签 (默认格式 repo:tag ---> like: nginx:1.21.1) or (Dockerhub带名称空间: namespace/repo:tag ---> like: mccokong/openjdk8u265:xx'
         required: true
         default: ''
       destination_repo:
