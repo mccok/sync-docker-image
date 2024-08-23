@@ -27,7 +27,8 @@ Docker 的一些服务所在域名被封杀，无法直接访问和拉取镜像�
 > 填写说明：
 >
 > 如同步 DockerHub 上的 nginx:1.13 到 阿里云容器镜像仓库 registry.cn-beijing.aliyuncs.com/ikrong/nginx:1.13，则填写如下：
-> #格式一:
+
+> 格式一:
 > ```yaml
 > # 镜像源 (Registry)
 > source: docker.io
@@ -37,8 +38,8 @@ Docker 的一些服务所在域名被封杀，无法直接访问和拉取镜像�
 > source_repo: nginx:1.13
 > # 目标仓库及标签 (格式 repo:tag)
 > destination_repo: dockerproxy_cc/nginx:1.13
-> #格式二
-> ```yaml
+
+> 格式二
 > # 镜像源 (Registry/namespace)
 > source: gcr.io/k8s-staging-sig-storage
 > # 目标源 (Registry)
